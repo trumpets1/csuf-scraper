@@ -15,7 +15,7 @@ real_links = list(filter(lambda x: x is not None, map(
 # what I really wanted: returns the last page to go to
 upper_limit = int(real_links[-1].split(' ')[1])
 
-# step 0.1: gather the urls
+# step 1: gather the urls
 
 
 def page_number(x):
@@ -23,6 +23,8 @@ def page_number(x):
 
 
 urls_to_visit = [page_number(i) for i in range(1, upper_limit + 1)]
+
+# step 2: extract course ids from onclick methods on the page
 
 
 def get_course_ids_from_page(res):
@@ -38,8 +40,12 @@ def get_courses_at_url(url):
     res = requests.get(url)
     return get_course_ids_from_page(res)
 
+
+# step 3: do this for every page in the catalog
 course_codes = list(map(get_courses_at_url, urls_to_visit))
 
+
+# step 4: flatten and write all the course codes to csv
 flat_course_codes = list(map(lambda code: [code], [
     item for sublist in course_codes for item in sublist]))
 
