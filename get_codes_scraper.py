@@ -31,9 +31,9 @@ def get_course_ids_from_page(res):
     csuf_classes_soup = bs4.BeautifulSoup(res.text, 'html.parser')
     classes = csuf_classes_soup.select('.width > a')
     onclicks = list(map(lambda class_link: class_link.get('onclick'), classes))
-    course_codes = list(map(lambda t: re.sub(
+    course_ids = list(map(lambda t: re.sub(
         "[^0-9]", "", t.split(',')[1].strip()), onclicks))
-    return course_codes
+    return course_ids
 
 
 def get_courses_at_url(url):
@@ -42,12 +42,12 @@ def get_courses_at_url(url):
 
 
 # step 3: do this for every page in the catalog
-course_codes = list(map(get_courses_at_url, urls_to_visit))
+course_ids = list(map(get_courses_at_url, urls_to_visit))
 
 
 # step 4: flatten and write all the course codes to csv
-flat_course_codes = list(map(lambda code: [code], [
-    item for sublist in course_codes for item in sublist]))
+flat_course_ids = list(map(lambda code: [code], [
+    item for sublist in course_ids for item in sublist]))
 
 with open('codes.csv', 'w', encoding='UTF8', newline='') as f:
     writer = csv.writer(f)

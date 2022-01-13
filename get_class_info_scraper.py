@@ -5,8 +5,8 @@ import requests
 import bs4
 
 
-def class_page(code):
-    return f'https://catalog.fullerton.edu/preview_course_nopop.php?catoid=70&coid={code}'
+def class_page(id):
+    return f'https://catalog.fullerton.edu/preview_course_nopop.php?catoid=70&coid={id}'
 
 
 df = pd.read_csv('codes.csv')
