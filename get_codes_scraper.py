@@ -1,5 +1,3 @@
-from urllib.parse import urlparse, unquote, urlencode
-from os.path import exists
 import csv
 import re
 import requests
