@@ -1,4 +1,7 @@
 *.csv
+data/*
+course_data/*
+degree_data/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
