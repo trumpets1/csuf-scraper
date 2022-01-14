@@ -53,4 +53,4 @@ with open('codes.csv', 'w', encoding='UTF8', newline='') as f:
     writer = csv.writer(f)
     header = ['courseids']
     writer.writerow(header)
-    writer.writerows(flat_course_codes)
+    writer.writerows(flat_course_ids)
