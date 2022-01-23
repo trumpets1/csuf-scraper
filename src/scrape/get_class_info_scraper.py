@@ -11,7 +11,7 @@ def class_page(id):
 
 # Get all the course codes and turn them into URLs
 df = pd.read_csv('codes.csv')
-df['urls'] = df['courseids'].apply(class_page)
+df['urls'] = df['id'].apply(class_page)
 
 
 def get_info_from_page(url):
@@ -30,7 +30,7 @@ for index, row in df.iterrows():
     print(f'remaining: {df.count() - index - 1}')
     children = get_info_from_page(row['urls'])
     html_content = str(children.prettify())
-    html_file = open(f'course_data/{row["courseids"]}.html', 'w')
+    html_file = open(f'course_data/{row["id"]}.html', 'w')
     html_file.write(html_content)
     html_file.close()
     if (index != 0 and index % 200 == 0):

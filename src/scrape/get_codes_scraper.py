@@ -51,6 +51,6 @@ flat_course_ids = list(map(lambda code: [code], [
 
 with open('codes.csv', 'w', encoding='UTF8', newline='') as f:
     writer = csv.writer(f)
-    header = ['courseids']
+    header = ['id']
     writer.writerow(header)
     writer.writerows(flat_course_ids)

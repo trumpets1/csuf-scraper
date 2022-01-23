@@ -1,15 +1,15 @@
 import unittest
-import structure_class_data
+import src.process.structure_class_data as structure_class_data
 
 
 # 494128 -- math 534
-math_534 = 'data/494128.html'
+math_534 = 'test_data/494128.html'
 # 494129 -- math 535
-math_535 = 'data/494120.html'
+math_535 = 'test_data/494120.html'
 # 494141 -- math 599 research
-math_599 = 'data/494141.html'
+math_599 = 'test_data/494141.html'
 # 493151 -- econ 440
-econ_440 = 'data/493151.html'
+econ_440 = 'test_data/493151.html'
 
 
 
@@ -47,5 +47,6 @@ class TestGettingComponentsFromTile(unittest.TestCase):
         """
         title_components = structure_class_data.get_title_data(math_534)
         self.assertEqual(title_components['units'], [3])
+
 if __name__ == '__main__':
     unittest.main()
